@@ -27,7 +27,7 @@
     <section id="home" class="route active">
       <section class="hero">
         <div class="hero-media">
-          <img src="assets/hero.jpg" alt="NYUAD campus at night" class="hero-img" />
+          <img src="images/campus.JPG" alt="NYUAD campus at night" class="hero-img" />
         </div>
         <div class="hero-copy card">
           <h1 class="title">Late-night cravings, sonic choices</h1>
@@ -36,85 +36,123 @@
           </p>
           <div class="cta-row">
             <a class="btn primary" href="#story">Start the Story</a>
-            <a class="btn ghost" href="#behind">Behind the Scenes</a>
           </div>
         </div>
       </section>
     </section>
 
     <!-- STORY -->
+    <!-- STORY -->
     <section id="story" class="route">
       <section class="story-stage">
         <figure class="stage-visual">
-          <img src="assets/store.jpg" alt="Convenience store at night" />
+          <img src="images/conv.JPG" alt="Convenience store at night" />
         </figure>
 
-        <!-- Replace this block in the STORY section -->
+        <!-- PHASE 1: Listen to 6 sounds first -->
+        <div id="listeningPhase" class="listening-phase">
+          <div class="options card">
+            <h3 class="subtitle">Listen to 6 sounds first</h3>
+            <p class="status" id="listeningStatus">Click each button below to listen to all 6 sounds.</p>
+            <div class="grid six" id="listeningGrid">
 
-<div class="narration card">
-  <div class="row between center">
-    <h2 class="subtitle">Guessing Game</h2>
-    <!-- Disable Play until all 6 samples are heard -->
-    <button id="playBtn" class="btn primary" disabled>Play</button>
-    <button id="relistenBtn" class="btn ghost" disabled>Re-listen</button>
-  </div>
+              <button class="option-listen" data-answer="Chips">
+                <span>Chips</span>
+                <audio preload="auto" src="audio/chips.mp3"></audio>
+              </button>
 
-  <!-- REMOVED narrator hint line -->
-  <!-- <p class="hint">Narrator: <em>"I want something sweet and crunchy."</em></p> -->
+              <button class="option-listen" data-answer="Carrots">
+                <span>Carrots</span>
+                <audio preload="auto" src="audio/carrots.mp3"></audio>
+              </button>
 
-  <!-- Main long audio (1:20) -->
-  <audio id="mainAudio" preload="auto" src="audio/narrator.mp3"></audio>
+              <button class="option-listen" data-answer="Cookies">
+                <span>Cookies</span>
+                <audio preload="auto" src="audio/cookies.mp3"></audio>
+              </button>
 
-  <div id="progress" class="progress">
-    <div id="progressBar" class="progress-bar"></div>
-  </div>
-  <!-- Updated status text -->
-  <p id="status" class="status">
-    First, preview all six sounds below. After you’ve listened to each one, the story will unlock.
-  </p>
-</div>
+              <button class="option-listen" data-answer="Sprite">
+                <span>Sprite</span>
+                <audio preload="auto" src="audio/sprite.mp3"></audio>
+              </button>
+
+              <button class="option-listen" data-answer="Ice-Cream">
+                <span>Ice-Cream</span>
+                <audio preload="auto" src="audio/icecream.mp3"></audio>
+              </button>
+
+              <button class="option-listen" data-answer="Chocolate-Bar">
+                <span>Chocolate-Bar</span>
+                <audio preload="auto" src="audio/chocolatebar.mp3"></audio>
+              </button>
+
+            </div>
+            <div class="next-btn-wrap">
+              <button id="nextBtn" class="btn primary" disabled>Next</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHASE 2: Guessing Game (initially hidden) -->
+        <div id="guessingPhase" class="guessing-phase" style="display: none;">
+          <div class="narration card">
+            <div class="row between center">
+              <h2 class="subtitle">Guessing Game</h2>
+              <div class="btn-group">
+                <button id="playBtn" class="btn primary">Play</button>
+                <button id="relistenBtn" class="btn ghost" disabled>Re-listen</button>
+              </div>
+            </div>
 
 
-        <!-- Six options (~10s each) -->
-        <div class="options card">
-          <h3 class="subtitle">Pick the matching sound</h3>
-          <div class="grid six" id="optionsGrid">
+            <!-- Main long audio (1:20) -->
+            <audio id="mainAudio" preload="auto" src="audio/narrator.mp3"></audio>
 
-            <button class="option" data-answer="Chips">
-              <span>chips</span>
-              <audio preload="auto" src="audio/chips.mp3"></audio>
-            </button>
-
-            <button class="option" data-answer="Carrots">
-              <span>carrots</span>
-              <audio preload="auto" src="audio/carrots.mp3"></audio>
-            </button>
-
-            <button class="option" data-answer="Cookies">
-              <span>cookies</span>
-              <audio preload="auto" src="audio/cookies.mp3"></audio>
-            </button>
-
-            <button class="option" data-answer="Sprite">
-              <span>sprite</span>
-              <audio preload="auto" src="audio/sprite.mp3"></audio>
-            </button>
-
-            <button class="option" data-answer="Ice-Cream">
-              <span>ice-cream</span>
-              <audio preload="auto" src="audio/icecream.mp3"></audio>
-            </button>
-
-            <button class="option" data-answer="Chocolate Bar">
-              <span>chocolate bar</span>
-              <audio preload="auto" src="audio/chocolatebar.mp3"></audio>
-            </button>
-
+            <div id="progress" class="progress">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+            <p id="status" class="status">
+              Press Play to start the story.
+            </p>
           </div>
 
-          <p class="caption">
-            Each sample is ~10 seconds. You can only choose when the narration has paused.
-          </p>
+          <!-- Six options (~10s each) -->
+          <div class="options card">
+            <h3 class="subtitle">Pick the matching sound</h3>
+            <div class="grid six" id="optionsGrid">
+
+              <button class="option" data-answer="Chips">
+                <span>Chips</span>
+                <audio preload="auto" src="audio/chips.mp3"></audio>
+              </button>
+
+              <button class="option" data-answer="Carrots">
+                <span>Carrots</span>
+                <audio preload="auto" src="audio/carrots.mp3"></audio>
+              </button>
+
+              <button class="option" data-answer="Cookies">
+                <span>Cookies</span>
+                <audio preload="auto" src="audio/cookies.mp3"></audio>
+              </button>
+
+              <button class="option" data-answer="Sprite">
+                <span>Sprite</span>
+                <audio preload="auto" src="audio/sprite.mp3"></audio>
+              </button>
+
+              <button class="option" data-answer="Ice-Cream">
+                <span>Ice-Cream</span>
+                <audio preload="auto" src="audio/icecream.mp3"></audio>
+              </button>
+
+              <button class="option" data-answer="Chocolate-Bar">
+                <span>Chocolate-Bar</span>
+                <audio preload="auto" src="audio/chocolatebar.mp3"></audio>
+              </button>
+
+            </div>
+          </div>
         </div>
       </section>
     </section>
@@ -125,7 +163,7 @@
         <h2 class="subtitle">Behind the Scenes</h2>
         <p class="caption">Filming & sound design process</p>
         <div class="video-wrap">
-          <iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/osIzP1vgsLw?si=jDHQOYlq76o5O1pT"></iframe>
         </div>
       </section>
     </section>
